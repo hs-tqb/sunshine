@@ -1,0 +1,4 @@
+/* pages/order/add/contacts/contacts.wxss */
+
+
+input { padding:0 20rpx; height:70rpx; border:1rpx solid #bbbbbb; border-radius:8rpx; }

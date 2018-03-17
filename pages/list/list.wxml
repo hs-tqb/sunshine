@@ -1,0 +1,18 @@
+
+
+<view id="page-list" class="page-container">
+  <view id="header"></view>
+  <scroll-view id="content">
+    <view class="flex-align-c">
+      <image src="/pages/images/logo.png" style="width:250rpx; height:250rpx;"></image>
+    </view>
+    <view class="panel">
+      <text class="text-l text-center text-danger">
+        请在天气宝微信公众号中查询您的订单
+        微信搜索公众号：tianqibao2015
+      </text>
+    </view>
+  </scroll-view>
+</view>
+
+

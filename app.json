@@ -1,0 +1,26 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/order/add/calendar/calendar",
+    "pages/order/add/pay/pay",
+    "pages/list/list",
+    "pages/order/add/city/city",
+    "pages/order/detail/detail",
+    "pages/order/add/contacts/contacts",
+    "pages/order/add/contacts/protocol/protocol",
+    "pages/order/add/result/result"
+  ],
+  "window":{
+    "navigationBarBackgroundColor":"#e54628",
+    "navigationBarTextStyle":"#fff",
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText":"晴空万里宝",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh":false
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

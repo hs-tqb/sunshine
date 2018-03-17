@@ -1,0 +1,106 @@
+
+
+
+<!-- 城市选择列表 -->
+
+
+<view id="page-order-add-city" class="page-container">
+  <view id="header" style="padding:20rpx">
+    <view class="flex-dir-row">
+      <view class="flex-1" style="position:relative; width:100%; height:60rpx; border:2rpx solid #ddd; border-radius:10rpx;">
+        <input 
+          class="flex-1"
+          placeholder="搜索" 
+          style="display:block; box-sizing:border-box; width:100%; height:100%; padding:0 30rpx;" 
+          bindfocus="onFocus"
+          bindinput="onInput"
+        ></input>
+        <!--  
+        -->
+        <icon type="search" style="position:absolute; top:12rpx; right:12rpx;" size="16"></icon>
+      </view>
+      <text wx:if="{{searching}}" style="display:block; padding-left:20rpx; width:80rpx; text-align:center; line-height:60rpx;" catchtap="cancelSearching">取消</text>
+    </view>
+  </view>
+  <!-- 选择城市 -->
+  <view id="content" class="flex-dir-row">
+    <!-- 搜索城市 -->
+    <block wx:if="{{searching}}">
+      <scroll-view class="list-container" style="height:calc(100vh - 100rpx);" scroll-y="true">
+        <text wx:if="{{!resultList.length}}" class="text-info text-center">没有结果</text>
+        <view wx:else bindtap="doSelectCity2">
+          <text wx:for="{{resultList}}" wx:key="resultList" data-list="resultList" data-idxs="{{index}}" data-cityname="{{item.name}}" data-cityid="{{item.id}}">{{item.name}}</text>
+        </view>
+      </scroll-view>
+    </block>
+     <!-- 选择城市 -->
+    <block wx:else>
+      <view  style="width:188rpx;">
+        <view class="tabs" scroll-y="true" style="height:calc(100vh - 100rpx);">
+          <block wx:for="{{tabs}}" wx:key="t{{index}}" >
+            <text class="{{tabSeleted===index?'active text-danger':''}}" data-index="{{index}}" bindtap="doSwitchTab">{{item}}</text>
+          </block>
+        </view>
+      </view>
+      <view class="flex-1">
+        <scroll-view scroll-y="true" class="list-city" style="height:calc(100vh - 100rpx);">
+          <!-- 历史 -->
+          <view class="list-city-container flex-1 flex-dir-row flex-wrap" wx:if="{{tabSeleted===0}}">
+              <text 
+                wx:for="{{recentCities}}" 
+                wx:for-item="city" 
+                wx:for-index="j" 
+                wx:key="c{{j}}"
+                class="{{city.selected?'selected':''}}"
+                data-cityid="{{city.cityId}}"
+                data-cityname="{{city.cityName}}"
+                data-list="recentCities"
+                data-idxs="{{j}}"
+                bindtap="doSelectCity"
+              >{{city.cityName}}</text>
+          </view>
+          <!-- 热门城市    
+          <view class="list-city-container flex-1 flex-dir-row flex-wrap" wx:if="{{tabSeleted===1}}">
+            <text 
+              wx:for="{{hotCities}}" 
+              wx:for-item="city" 
+              wx:for-index="j" 
+              wx:key="c{{j}}"
+              class="{{city.selected?'selected':''}}"
+              data-cityid="{{city.cityId}}"
+              data-cityname="{{city.cityName}}"
+              data-list="hotCities"
+              data-idxs="{{j}}"
+              bindtap="doSelectCity"
+            >{{city.cityName}}</text>
+          </view>
+           -->        
+          <!-- 其它城市列表 -->
+          <view class="list-city-container flex-1">
+            <block wx:for="{{allCities}}" wx:for-item="areaList" wx:for-index="i" wx:key="allCities" wx:if="{{tabSeleted-1===i}}">
+              <view wx:for="{{areaList.children}}" wx:for-item="contryList" wx:for-index="j" wx:key="contryList">
+                <view class="text-info text-l" style="padding:10rpx;">{{contryList.name}}</view>
+                <view class="flex-dir-row flex-wrap">
+                  <text 
+                    wx:for="{{contryList.children}}" 
+                    wx:for-item="city" 
+                    wx:for-index="k" 
+                    wx:key="city"
+                    class="{{city.selected?'selected':''}}"
+                    data-cityid="{{city.id}}"
+                    data-cityname="{{city.name}}"
+                    data-list="allCities"
+                    data-idxs="{{i}}-{{j}}-{{k}}"
+                    bindtap="doSelectCity"
+                  >{{city.name}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+    </block>
+  </view>
+</view>
+
+

@@ -1,0 +1,17 @@
+/* pages/order/detail/detail.wxss */
+
+#info-payout  { padding:3vh 0; }
+#info-trigger { padding:1.2vh 0; }
+
+#modal-changePrice { opacity:0; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.5); transition-duration:300ms; }
+#modal-changePrice .list-container { position:absolute; left:0; top:100%; width:100%; transition-duration:300ms; background-color:#fff; }
+#modal-changePrice .list-item.prompt { padding:10rpx 0; line-height:1.6; }
+
+
+#modal-changePrice.active { opacity:1; }
+#modal-changePrice.active .list-container { transform:translate3d(0,-100%,0); }
+
+#modal-changePrice.leave { opacity:0; }
+#modal-changePrice.leave .list-container { transform:translate3d(0,0,0); }
+
+.stations text { display:inline-block; }

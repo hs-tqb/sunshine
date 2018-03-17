@@ -1,0 +1,5 @@
+1, guide
+2, calendar -> city -> calendar     时间和城市, 订单信息( contractId,threshold,payoutRuleParam )
+3, detail                           价格(5,10,20,50), 最高赔付
+4, contacts -> promise -> contacts  用户信息( name, phoneNumber, idNumber )
+5, pay -> result

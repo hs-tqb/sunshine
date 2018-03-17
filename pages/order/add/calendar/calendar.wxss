@@ -1,0 +1,50 @@
+/* pages/order/add/calendar/calendar.wxss */
+
+.cal-month { background:#fff; }
+.cal-month-title { line-height:80rpx; background:#fff; }
+.cal-week { height:107rpx; }
+.cal-week-title { line-height:56rpx; text-align:center; border-bottom:2rpx solid #eee; }
+
+.cal-month { border-bottom:1rpx solid #eee; } 
+.cal-week-title,
+.cal-week { border-top:1rpx solid #eee; }
+.cal-day:not(:last-child) { border-right:1rpx solid #eee; }
+.cal-day.today  { color:#fd5e47; } 
+.cal-day.today,
+.cal-day.limit,
+.cal-day.prefix { background-color:#eee; }
+.cal-day.limit,
+.cal-day.prefix { color:#aaa; }
+
+.cal-day.incontinuous { background:pink; color:#fff; }
+
+.cal-day.suffix { background-color:#eee; } 
+
+.cal-day .text { line-height:57rpx; }
+.cal-day .city { padding:0 0rpx; line-height:22rpx; }
+
+/* 选择 */
+.cal-day.selected { background:#fd5e47; color:#fff; }
+
+
+/* 操作栏 */
+.cal-day { position:relative; }
+.operation-bar { position:absolute; left:-65rpx; top:-88rpx; z-index:100; width:241rpx;height:91rpx; }
+.operation-bar .operation-bar-bg { width:241rpx; height:73rpx; }
+.operation-bar .operation-bar-arrow { margin:0 auto; width:27rpx; height:18rpx; }
+.operation-bar .btns { position:absolute; top:0; left:0; width:100%; line-height:73rpx; color:#fff; }
+.cal-day:first-child .operation-bar { left:0; }
+.cal-day:last-child  .operation-bar { left:auto; right:0; }
+.cal-day:first-child .operation-bar .operation-bar-arrow { margin-left:40rpx; }
+.cal-day:last-child .operation-bar  .operation-bar-arrow { margin-left:175rpx; }
+
+
+
+/*  小贴士  */
+/* .cal-month:last-child { padding-bottom:60rpx; } */
+#tips { position:relative; z-index:10; line-height:60rpx; background:#fff; border-top:2rpx solid #eee; }
+
+
+#content { height:calc(100vh - 160rpx - 56rpx)!important; }
+
+view.incontinuous { background:pink; }

@@ -1,0 +1,64 @@
+
+
+<view id="page-order-add-calendar" class="page-container">
+  <view class="cal-week-title flex-dir-row" >
+    <text 
+      wx:for="{{['一','二','三','四','五','六','日']}}" 
+      class="flex-1 {{index>=5?'text-danger':''}}"  
+      wx:key="wt{{index}}"
+    >{{item}}</text>
+  </view>
+  <scroll-view id="content" scroll-y="true">
+    <!--  -->
+    <block wx:for="{{monthList}}" wx:for-item="month" wx:for-index="monthIndex" wx:key="m{{monthIndex}}">
+      <view class="cal-month-title text-danger text-l text-center">
+        <text>{{month.date.year}} 年 {{month.date.month<10?'0':''}}{{month.date.month+1}} 月</text>
+      </view>
+      <view class="cal-month text-center">
+        
+        <view
+          class="cal-week flex-dir-row"
+          wx:for="{{month.data}}"
+          wx:for-item="week"
+          wx:for-index="weekIndex"
+          wx:key="w{{weekIndex}}"
+        >
+          <view 
+            class="cal-day flex-1 {{day.type}} {{day.selected?'selected':(day.incontinuous?'incontinuous':'')}}" 
+            wx:for="{{week}}" wx:for-item="day" wx:for-index="dayIndex" wx:key="d{{dayIndex}}"
+            data-year="{{day.year}}" date-month="{{day.month}}" date-day="{{day.day}}" 
+            data-selectable="{{day.selectable}}"
+            data-idxs="{{monthIndex}},{{weekIndex}},{{dayIndex}}"
+            bindtap="selectDay"
+          > 
+            <text class="text text-l">{{day.day||''}}</text>
+            <text class="city text-s">{{day.city?day.city.cityName:''}}</text>
+              <view class="operation-bar" wx:if="{{day.showOperationBar}}">
+                <image src="/pages/images/operation-bar.png" class="operation-bar-bg"></image>
+                <image class="operation-bar-arrow {{operationBar.arrow}}" src="/pages/images/operation-bar-arrow.png"></image>
+                <view class="btns flex-dir-row text-center">
+                  <text class="flex-1" catchtap="updateSelect">更改</text>
+                  <text class="flex-1" catchtap="deleteSelect">删除</text>
+                </view>
+              </view>
+          </view>  
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view id="tips" class="text-center text-danger">
+    <text wx:if="{{showTips==='discontinuity'}}">旅游计划必须日期连续哦</text>
+    <text wx:elif="{{showTips==='default'}}">旅游计划至少 3 天</text>
+    <text wx:else="{{showTips==='valid'}}">{{orderDateStart}} 至 {{orderDateEnd}}, 共{{orderDateCount}}天行程, {{orderCityCount}}个目的地</text>
+  </view>
+  <view id="footer" class="{{orderable?'bg-danger':'bg-disabled'}}  flex-abs-center text-l" data-orderable="{{orderable}}" bindtap="submitOrder">
+    <text>查询保障方案</text>
+  </view>
+  <view 
+    wx:if="{{!hasReadGuide}}"
+    style="position:fixed; top:0; left:0; z-index:100; width:100%; height:100%; background:#e54628; overflow:hidden;"
+  >
+    <view style="position:absolute; left:180rpx; top:728rpx; z-index:10; width:400rpx; height:100rpx;" catchtap="doReadGuide"></view>
+    <image src="/pages/images/guide.png" style="position:absolute; left:0; bottom:0; width:750rpx; height:100%;"></image>
+  </view>
+</view>

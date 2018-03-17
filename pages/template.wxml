@@ -1,0 +1,16 @@
+<!--
+  页面 基本布局 和 命名约定
+-->
+
+
+
+
+<view id="page-页面名字" class="page-container">
+  <view id="header"></view>
+  <scroll-view id="content" scroll-y="true">
+    
+  </scroll-view>
+  <view id="footer"></view>
+</view>
+
+

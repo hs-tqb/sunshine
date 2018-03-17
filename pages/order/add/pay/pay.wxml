@@ -1,0 +1,80 @@
+
+<!-- 确定支付 -->
+
+
+
+
+<view id="page-order-add-pay" class="page-container" style="font-size:28rpx;">
+  <scroll-view id="content" scroll-y="true">
+    <view id="order-confirm" class="step panel bg-header" data-step="4">
+      <view class="order-info-summary">
+        <text class="text-x" style="line-height:2;">{{productTitle||'晴空万里宝'}}</text>
+        <text space="nbsp">保障时间：{{dates[0]}} 至 {{dates[dates.length-1]}}</text>
+        <text space="nbsp">保障城市: {{cities}}</text>
+      </view>
+    </view>
+    <view>
+      <image src="/pages/images/bg-lace.png" style="display:block; margin-top:-12rpx; width:750rpx; height:12rpx;"></image>
+    </view>
+    <view class="list-container panel-top-gap">
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">触发标准</text>
+        <text class="flex-1 text-right">日降水量 > {{threshold}}mm</text>
+      </view>
+      <!--
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">起赔天数</text>
+        <text class="flex-1 text-right">{{dates.length}} 天</text>
+      </view>
+      -->
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">最高赔付金额</text>
+        <text class="flex-1 text-right">￥{{maxPayout}}</text>
+      </view>
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">被保人姓名</text>
+        <text class="flex-1 text-right">{{insuredInfo[0].insuredName}}</text>
+      </view>
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">被保人身份证号</text>
+        <text class="flex-1 text-right">{{insuredInfo[0].insuredCard}}</text>
+      </view>
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">被保人手机</text>
+        <text class="flex-1 text-right">{{insuredInfo[0].insuredMobile}}</text>
+      </view>
+      <view class="list-item flex-dir-row">
+        <text class="flex-1 text-left">售价</text>
+        <text class="flex-1 text-right">￥{{payFee}}</text>
+      </view>
+      <view class="list-item flex-dir-row">
+        <view class="flex-1 text-left flex-dir-row">
+          <text space="nbsp">优惠码    </text>
+          <input 
+            class="flex-1" 
+            style="height:90rpx;" 
+            placeholder="点击输入" 
+            bindinput="couponInput"
+            placeholder-class="text-m text-info"
+          ></input>
+        </view>
+        <block wx:if="{{coupon.state==='success'}}">
+          <text class="text-success">-￥{{coupon.amount}}</text>
+        </block>
+        <block wx:elif="{{coupon.state==='failed'}}">
+          <text space="nbsp">{{coupon.message}}  -￥0</text>
+        </block>
+        <block wx:elif="{{coupon.state==='empty'}}">
+          <text>-￥0</text>
+        </block>
+      </view>
+      <view class="list-item flex-dir-row" style="border-bottom:0 none;">
+        <text class="flex-1 text-right" space="nbsp">合计：</text>
+        <text class="text-danger text-l">￥{{finalPayFee}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view id="footer" class="flex-abs-center bg-danger text-l" bindtap="doPay">
+    <text>确认支付</text>
+  </view>
+</view>

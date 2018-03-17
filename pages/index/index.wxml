@@ -1,0 +1,19 @@
+<!--pages/index/index.wxml-->
+
+<view id="page-guide" class="page-container">
+  <scroll-view id="content" style="overflow:hidden;">
+    <view style="positon:relative; height:100%; background:#1678a8;">
+      <!-- <view style="height:100%; background:url(/pages/images/bg.jpg) no-repeat center/cover;"></view> -->
+       <image src="/pages/images/bg.jpg" style="position:absolute; left:0; bottom:0; width:750rpx; height:calc(100vh - 100rpx);"></image> 
+    </view>
+    <text style="position:absolute; bottom:20rpx; right:20rpx; z-index:10; color:#fff;">{{merchantId}}</text>
+  </scroll-view>
+  <view id="footer" class="flex-dir-row">
+    <view class="flex-1 flex-abs-center bg-primary" catchtap="navToList">
+      我的订单
+    </view> 
+    <view class="flex-2 flex-abs-center bg-danger" catchtap="navToOrder" catchlongtap="longtap">
+      购买天气保障
+    </view>   
+  </view>
+</view>

@@ -1,0 +1,9 @@
+/* pages/order/add/add.wxss */
+
+
+
+#order-confirm {
+  background-repeat:no-repeat; 
+  background-position:0 100%;
+  background-size:100% auto;
+}

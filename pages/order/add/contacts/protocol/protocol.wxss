@@ -1,0 +1,6 @@
+/* pages/order/add/contacts/protocol/protocol.wxss */
+
+#inner-container { padding:50rpx 30rpx; text-align:justify; }
+.title { line-height:100rpx; }
+text { display:block; }
+view:not(:first-child) { margin:20rpx 0; }

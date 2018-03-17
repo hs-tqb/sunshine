@@ -1,0 +1,14 @@
+/* pages/order/add/city/city.wxss */
+
+#header { border-bottom:2rpx solid #dddddd; }
+.tabs { position:relative; z-index:10; border-right:2rpx solid #dddddd; }
+.tabs text { padding:0 1rpx; display:block; width:100%; text-align:center; line-height:100rpx; border-bottom:2rpx solid #dddddd; }
+.tabs text.active { background:#f5f5f5; border-right:0; }
+
+.list-city { padding:10rpx; background:#f5f5f5; }
+.list-city text { display:block; box-sizing:border-box; margin:8rpx; padding:0 10rpx; min-width:162rpx; height:80rpx; line-height:80rpx; text-align:center; background-color:#fff; border:1rpx solid #bbbbbb; border-radius:8rpx; }
+.list-city text.selected { background-color:#fd5e47; border-color:#fd5e47; color:#fff; }
+
+
+.list-container text { display:block; padding:0 30rpx; line-height:90rpx; border-bottom:1rpx solid #ddd; }
+.list-container text:last-child { border-bottom:0 none; }

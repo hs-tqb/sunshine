@@ -1,0 +1,75 @@
+
+
+
+
+
+
+<view id="page-order-add-contacts" class="page-container">
+  <scroll-view id="content">
+    <view style="padding:10rpx 25rpx; text-align:justify; background-color:lightyellow;">
+      <text class="text-m">为了有效保护广大被保人利益，购买人和被保人必须为同一人。赔付款将会通过微信转账到被保人的微信账户中，请被保人务必关注天气宝微信公众号并在公众号中绑定手机。</text>
+    </view>
+    <view class="panel">
+      <view>
+        <input class="block flex-1" type="text" placeholder="被保人姓名" data-name="name" bindinput="input" value="{{insuredInfo.insuredName}}"></input>
+      </view>
+      <view style="margin-top:20rpx;">
+        <input class="block flex-1" type="text" maxlength="18" placeholder="被保人身份证号" data-name="idNumber" bindinput="input" value="{{insuredInfo.insuredCard}}"></input>
+      </view>
+      <view style="margin-top:20rpx;">
+        <input class="block flex-1" type="number" maxlength="11" placeholder="被保人手机号" data-name="phoneNumber" bindinput="input" value="{{insuredInfo.insuredMobile}}"></input>
+      </view>
+      <view class="flex-dir-row" style="margin-top:20rpx;">
+        <input class="block flex-1" type="text" placeholder="验证码" data-name="vfCode" bindinput="input"></input>
+        <view 
+          class="flex-abs-center text-center {{hasVfCodeSent?'bg-disabled text-m':'bg-danger'}}" 
+          style="margin-left:20rpx; width:220rpx; border-radius:8rpx;"
+          bindtap="sendVfCode"
+        >
+          <text>{{hasVfCodeSent? resendVfCodeCountDown+' 秒后重新发送': '发送验证码'}}</text>
+        </view>
+      </view>
+      <!--
+        <text class="text-info" style="text-align:justify">
+          为有效保障广大被保人利益，天气宝仅支持被保人自己购买。赔付款将会通过微信转账到您的微信账户中。这之前，请您务必关注天气宝微信号并绑定手机。
+        </text>
+      -->
+    </view>
+  </scroll-view>
+  <view id="footer" class="flex-abs-center {{orderable?'bg-danger':'bg-disabled'}} text-l" catchtap="confirmUserInfo">
+    <text>提交订单</text>
+  </view>
+    <!--
+    -->
+  <view
+    wx:if="{{!hasReadNotice}}"
+    class="flex-abs-center"
+    style="position:fixed; z-index:100; top:0; left:0; width:100%; height:100%; line-height:1.2; background:rgba(0,0,0,0.65)"
+    data-control="close"
+    bindtap="closeModal"
+  >
+    <view style="position:relative; margin-top:-15%; width:72%; background:#fff; border-radius:8rpx; overflow:hidden;">
+      <view class="flex-1 panel" style="color:#333;">
+        <image src="/pages/images/btn-close.png" 
+          style="position:absolute; right:30rpx; top:30rpx; width:40rpx; height:40rpx;"
+          data-control="close"
+        ></image>
+        <text class="text-l text-b text-center">真实出行须知</text>
+        <text style="margin-top:25rpx; text-align:justify; ">为长久保护真实出行被保人的权益，打击恶意骗保行为，天气宝反欺诈团队可能会对订单的赔付进行审核，要求被保人提供真实出行材料，比如机票电子客票号，护照出入境页等。</text>
+        <text style="margin-top:25rpx; text-align:justify; ">如果发现被保人通过虚构出行目的地，进行牟利为目的的竞彩赌博行为，天气宝有权拒绝发放赔付。</text>
+        <text style="margin-top:25rpx; text-align:justify; ">真实出行的保障需求会得到最大守护。</text>
+        <navigator 
+          class="text-primary"
+          open-type="navigate" 
+          url="./protocol/protocol"
+          style="margin-top:35rpx; text-align:center;"
+        >详情请阅读《天气宝用户服务协议》</navigator>
+      </view>
+      <view class="bg-danger flex-abs-center" data-control="close" style="height:100rpx;" bindtap="doPromise">
+        <text data-control="close">已了解并承诺为真实出行</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+

@@ -1,0 +1,126 @@
+
+/* .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}  */
+
+/*********************************** 通用 ***********************************/
+
+page {
+  display:flex;
+  flex-direction:column;  
+  height:100%;
+  box-sizing:border-box; 
+  font-size:28rpx;
+  line-height:1.5;
+  color:#666666;
+}
+view, scroll-view {
+  display: flex;  
+  flex-direction: column;  
+  box-sizing: border-box;   
+}
+.page-container {
+  flex:1;
+}
+#content {
+  flex:1;
+}
+
+.page-container #header  { height:100rpx; }
+.page-container #content  { flex:1; }
+.page-container #footer   { height:100rpx; }
+
+/* 
+  scroll-view 上 flex:1 和 height:100% 不生效, 必须要设置具体值;
+  下面的样式假设: 页面结构严格按照 page = header(可选) + content(必选) + footer(可选) 的结构来构建
+  如果有另外的结构, 需要自己设置样式
+*/
+.page-container > scroll-view#content:only-child { height:100vh; }
+.page-container > scroll-view#content:not(:only-child) { height:calc(100vh - 100rpx); }
+.page-container > scroll-view#content:not(:only-child):not(:first-child):not(:last-child) { height:calc(100vh - 200rpx); }
+
+.box-sizing { box-sizing:border-box; }
+
+/*********************************** 布局 ***********************************/
+
+/* 预设的 flex 指数, 可以匹配 1~12, 大概够用了 */
+.flex   { display:flex; }
+.flex-1 { flex:1; }
+.flex-2 { flex:2; }
+.flex-3 { flex:3; }
+.flex-4 { flex:4; }
+.flex-5 { flex:5; }
+.flex-6 { flex:6; }
+/* flex 容器排列方式 */
+.flex-dir-row { display:flex; flex-direction:row; }
+.flex-dir-col { display:flex; flex-direction:column; }
+/* flex 容器对齐方式 */
+.flex-justify-c  { display:flex; justify-content:center; }
+.flex-justify-sa { display:flex; justify-content:space-around;  }
+.flex-justify-sb { display:flex; justify-content:space-between; }
+.flex-justify-fs { display:flex; justify-content:flex-start; }
+.flex-justify-fe { display:flex; justify-content:flex-end; }
+.flex-align-c    { display:flex; align-items:center; }
+.flex-align-s    { display:flex; align-items:stretch; }
+.flex-align-fs   { display:flex; align-items:flex-start; }
+.flex-align-fe   { display:flex; align-items:flex-end; }
+.flex-abs-center { display:flex; justify-content:center; align-items:center; }
+.flex-wrap       { flex-wrap:wrap; }
+
+/* .panel { padding:.8rem; } */
+.panel { padding:30rpx; }
+.panel-top-gap { border-top:10px solid #f5f5f5; }
+.panel .panel-heading { margin-bottom:25rpx; line-height:1; }
+/* .panel .panel-heading { padding:20rpx .8rem;  } */
+/* .panel .panel-heading .panel-title { line-height:90rpx; } */
+/* .panel .panel-body    { padding:.8rem; } */
+/* .panel .panel-heading + .panel-body { padding-top:0; } */
+
+.fl { float:left; }
+.fr { float:right; }
+
+/*********************************** 内容 ***********************************/
+
+.block  { display:block; }
+.none   { display:none; }
+.inline { display:inline; }
+/* .text-container { text-align:justify; } */
+
+.text-center { text-align:center; }
+.text-left   { text-align:left; }
+.text-right  { text-align:right; }
+.text-s { font-size:20rpx; }
+.text-m { font-size:24rpx; }
+.text-l { font-size:32rpx; }
+.text-x { font-size:48rpx; }
+.text-h { font-size:64rpx; }
+.text-b { font-weight:bold; }
+
+/* .text-title { font-size:32rpx; } */
+
+/*********************************** 颜色 ***********************************/
+
+.bg-primary { background-color:#08bff4; border-color:#08bff4; color:#fff; }
+.bg-danger  { background-color:#fd5e47; border-color:#fd5e47; color:#fff; }
+.bg-header  { background-color:#e34731; border-color:#fd5e47; color:#fff; }
+.bg-disabled{ background-color:#dddddd; border-color:#dddddd; }
+.text-primary { color:#08bff4; }
+.text-danger  { color:#fd5e47; }
+.text-info    { color:#ccc; }
+.text-success { color:#67c23a; }
+
+/*********************************** 元素 ***********************************/
+
+.table { border:1px solid #cccccc }
+.table .tr:not(:last-child) { border-bottom:1px solid #cccccc; }
+.table .tr .td:not(:last-child) { border-right:1px solid #cccccc; }
+.table .tr .td { padding:.3rem; }
+
+.list-container {  }
+.list-item { padding:0 30rpx; line-height:90rpx; border-bottom:1rpx solid #f5f5f5; }
